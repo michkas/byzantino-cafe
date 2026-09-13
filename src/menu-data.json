@@ -1,0 +1,86 @@
+{
+  "Currencies": {
+    "EUR": {
+      "Symbol": "€",
+      "Name": { "el": "Ευρώ", "en": "Euro" }
+    }
+  },
+  "Categories": [
+    {
+      "Id": "cat-drinks",
+      "ParentCategoryId": null,
+      "Name": { "el": "Ροφήματα", "en": "Drinks" }
+    },
+    {
+      "Id": "cat-coffee-hot",
+      "ParentCategoryId": "cat-drinks",
+      "Name": { "el": "Ζεστοί Καφέδες", "en": "Hot Coffees" }
+    },
+    {
+      "Id": "cat-coffee-cold",
+      "ParentCategoryId": "cat-drinks",
+      "Name": { "el": "Κρύοι Καφέδες", "en": "Cold Coffees" }
+    },
+    {
+      "Id": "cat-bakery",
+      "ParentCategoryId": null,
+      "Name": { "el": "Αρτοποιήματα & Σνακ", "en": "Bakery & Snacks" }
+    }
+  ],
+  "Items": [
+    {
+      "Id": "item-espresso",
+      "ParentCategoryId": "cat-coffee-hot",
+      "Price": { "Value": 2.20, "CurrencyId": "EUR" },
+      "Name": { "el": "Εσπρέσο", "en": "Espresso" }
+    },
+    {
+      "Id": "item-cappuccino",
+      "ParentCategoryId": "cat-coffee-hot",
+      "Price": { "Value": 3.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Καπουτσίνο", "en": "Cappuccino" }
+    },
+    {
+      "Id": "item-greek-coffee",
+      "ParentCategoryId": "cat-coffee-hot",
+      "Price": { "Value": 2.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Ελληνικός Καφές", "en": "Traditional Greek Coffee" }
+    },
+    {
+      "Id": "item-freddo-espr",
+      "ParentCategoryId": "cat-coffee-cold",
+      "Price": { "Value": 2.80, "CurrencyId": "EUR" },
+      "Name": { "el": "Φρέντο Εσπρέσο", "en": "Freddo Espresso" }
+    },
+    {
+      "Id": "item-freddo-cap",
+      "ParentCategoryId": "cat-coffee-cold",
+      "Price": { "Value": 3.20, "CurrencyId": "EUR" },
+      "Name": { "el": "Φρέντο Καπουτσίνο", "en": "Freddo Cappuccino" }
+    },
+    {
+      "Id": "item-frappe",
+      "ParentCategoryId": "cat-coffee-cold",
+      "Price": { "Value": 2.50, "CurrencyId": "EUR" },
+      "Name": { "el": "Φραπέ", "en": "Frappé" }
+    },
+    {
+      "Id": "item-tiropita",
+      "ParentCategoryId": "cat-bakery",
+      "Price": { "Value": 2.60, "CurrencyId": "EUR" },
+      "Name": { "el": "Παραδοσιακή Τυρόπιτα", "en": "Traditional Cheese Pie" }
+    },
+    {
+      "Id": "item-bougatsa",
+      "ParentCategoryId": "cat-bakery",
+      "Price": { "Value": 3.40, "CurrencyId": "EUR" },
+      "Name": { "el": "Μπουγάτσα με Κρέμα", "en": "Bougatsa with Custard" }
+    },
+    {
+      "Id": "item-croissant",
+      "ParentCategoryId": "cat-bakery",
+      "Price": { "Value": 2.80, "CurrencyId": "EUR" },
+      "Name": { "el": "Κρουασάν Σοκολάτας", "en": "Chocolate Croissant" }
+    }
+  ]
+}
