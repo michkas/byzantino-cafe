@@ -1,18 +1,21 @@
-# Normalize text files to LF in the repository
-* text=auto
+# Normalize all text files to LF in the repo, but CRLF on checkout
+* text eol=crlf
 
 # Source and configuration files
-*.css text eol=lf
-*.html text eol=lf
-*.js text eol=lf
-*.jsx text eol=lf
-*.json text eol=lf
-*.md text eol=lf
-*.ts text eol=lf
-*.tsx text eol=lf
-*.xml text eol=lf
-*.yml text eol=lf
-*.yaml text eol=lf
+*.css text eol=crlf
+*.html text eol=crlf
+*.js text eol=crlf
+*.jsx text eol=crlf
+*.json text eol=crlf
+*.md text eol=crlf
+*.ts text eol=crlf
+*.tsx text eol=crlf
+*.xml text eol=crlf
+*.yml text eol=crlf
+*.yaml text eol=crlf
+
+# SVG files stay LF for stable XML and asset diffs
+*.svg text eol=lf
 
 # Shell scripts must use LF
 *.sh text eol=lf
