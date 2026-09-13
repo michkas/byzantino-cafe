@@ -2,9 +2,16 @@ import { useEffect, useState } from 'react'
 import rawMenuData from './menu-data.json'
 import type { MenuSchema } from './types'
 import MenuCategory from './MenuCategory'
+import byzantinoLogo from './assets/logos/byzantino-logo.svg'
 
 const menuData = rawMenuData as MenuSchema
 const currency = menuData.Currencies.EUR.Symbol
+const cafeName = 'Βυζαντινό Tennis Club Café'
+const cafeShortName = 'Βυζαντινό'
+const cafeSetting = {
+  en: 'Garden & Veranda',
+  el: 'Κήπος και βεράντα',
+} as const
 
 type View = 'home' | 'menu' | 'document'
 type Language = 'en' | 'el'
@@ -75,10 +82,11 @@ function App() {
             className="flex items-center gap-2.5 font-bold tracking-tight text-neutral-900 hover:opacity-80 transition cursor-pointer"
             title={lang === 'el' ? 'Επιστροφή στην Αρχική' : 'Return to Home'}
           >
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-900 text-white font-mono text-sm">
-              🎾
-            </span>
-            <span className="text-base sm:text-lg">Smash & Serve Cafe</span>
+            <img
+              src={byzantinoLogo}
+              alt={cafeShortName}
+              className="h-8 w-auto max-w-[220px]"
+            />
           </button>
 
           {/* Right Header Controls (Context action + Language Switcher) */}
@@ -113,12 +121,12 @@ function App() {
             <section className="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-10 lg:p-12 shadow-xs">
               <div className="max-w-3xl space-y-4">
                 <span className="inline-block rounded-full bg-neutral-100 px-3 py-1 text-xs font-medium text-neutral-700">
-                  {lang === 'el' ? 'Tennis Club & Lounge' : 'Tennis Club & Lounge'}
+                  {cafeSetting[lang]}
                 </span>
                 <h1 className="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl lg:text-5xl">
                   {lang === 'el'
-                    ? 'Καλώς ήρθατε στο Smash & Serve Cafe'
-                    : 'Welcome to Smash & Serve Cafe'}
+                    ? `Καλώς ήρθατε στο ${cafeName}`
+                    : `Welcome to ${cafeName}`}
                 </h1>
                 <p className="text-base text-neutral-600 sm:text-lg">
                   {lang === 'el'
@@ -159,7 +167,7 @@ function App() {
                   <div className="space-y-4 text-sm text-neutral-600">
                     <div>
                       <p className="font-semibold text-neutral-900">{lang === 'el' ? 'Διεύθυνση:' : 'Address:'}</p>
-                      <p>Smash & Serve Tennis Club, Court Lane 12, Athens</p>
+                      <p>{cafeName}, Court Lane 12, Athens</p>
                     </div>
                     <div>
                       <p className="font-semibold text-neutral-900">{lang === 'el' ? 'Τηλέφωνο:' : 'Phone:'}</p>
@@ -267,11 +275,10 @@ function App() {
               <nav className="flex gap-2 overflow-x-auto no-scrollbar">
                 <button
                   onClick={() => setSelectedParentCatId('all')}
-                  className={`shrink-0 rounded-full px-3.5 py-1 text-xs font-semibold transition cursor-pointer ${
-                    selectedParentCatId === 'all'
+                  className={`shrink-0 rounded-full px-3.5 py-1 text-xs font-semibold transition cursor-pointer ${selectedParentCatId === 'all'
                       ? 'bg-neutral-900 text-white'
                       : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'
-                  }`}
+                    }`}
                 >
                   {lang === 'el' ? 'Όλα' : 'All'}
                 </button>
@@ -279,11 +286,10 @@ function App() {
                   <button
                     key={cat.Id}
                     onClick={() => setSelectedParentCatId(cat.Id)}
-                    className={`shrink-0 rounded-full px-3.5 py-1 text-xs font-semibold transition cursor-pointer ${
-                      selectedParentCatId === cat.Id
+                    className={`shrink-0 rounded-full px-3.5 py-1 text-xs font-semibold transition cursor-pointer ${selectedParentCatId === cat.Id
                         ? 'bg-neutral-900 text-white'
                         : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'
-                    }`}
+                      }`}
                   >
                     {cat.Name[lang] || cat.Name.en}
                   </button>
@@ -328,7 +334,7 @@ function App() {
               {/* Document Header */}
               <header className="border-b-2 border-neutral-900 pb-6 text-center space-y-1">
                 <p className="text-xs font-semibold tracking-widest text-neutral-500 uppercase">
-                  Smash & Serve Tennis Club
+                  {cafeName}
                 </p>
                 <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900 uppercase">
                   {lang === 'el' ? 'Κατάλογος Cafe & Bar' : 'Cafe & Bar Menu'}
@@ -376,7 +382,7 @@ function App() {
 
               {/* Document Footer Note */}
               <footer className="border-t border-neutral-200 pt-4 text-center text-[11px] text-neutral-400">
-                Smash & Serve Tennis Club • Court Lane 12, Athens • Tel: +30 210 000 0000
+                {cafeName} • Court Lane 12, Athens • Tel: +30 210 000 0000
               </footer>
             </article>
           </div>
@@ -387,7 +393,7 @@ function App() {
       <footer className="border-t border-neutral-200 bg-white mt-12">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-6 text-center text-xs text-neutral-500 sm:flex-row sm:px-6 sm:text-left lg:px-8">
           <div>
-            <p className="font-semibold text-neutral-700">Smash & Serve Tennis Club Cafe</p>
+            <p className="font-semibold text-neutral-700">{cafeName}</p>
             <p>Court-side refreshments & lounge • +30 210 000 0000</p>
           </div>
           <div className="flex items-center gap-4">
