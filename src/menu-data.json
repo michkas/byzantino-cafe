@@ -7,80 +7,610 @@
   },
   "Categories": [
     {
-      "Id": "cat-drinks",
+      "Id": "cat-beverages",
       "ParentCategoryId": null,
-      "Name": { "el": "Ροφήματα", "en": "Drinks" }
+      "Name": { "el": "Καφέδες & Ροφήματα", "en": "Coffee & Beverages" }
     },
     {
-      "Id": "cat-coffee-hot",
-      "ParentCategoryId": "cat-drinks",
-      "Name": { "el": "Ζεστοί Καφέδες", "en": "Hot Coffees" }
+      "Id": "cat-coffee",
+      "ParentCategoryId": "cat-beverages",
+      "Name": { "el": "Καφές", "en": "Coffee" }
     },
     {
-      "Id": "cat-coffee-cold",
-      "ParentCategoryId": "cat-drinks",
-      "Name": { "el": "Κρύοι Καφέδες", "en": "Cold Coffees" }
+      "Id": "cat-hot-cold-beverages",
+      "ParentCategoryId": "cat-beverages",
+      "Name": { "el": "Ροφήματα", "en": "Beverages" }
     },
     {
-      "Id": "cat-bakery",
+      "Id": "cat-refreshments",
       "ParentCategoryId": null,
-      "Name": { "el": "Αρτοποιήματα & Σνακ", "en": "Bakery & Snacks" }
+      "Name": { "el": "Αναψυκτικά & Ενέργεια", "en": "Soft Drinks & Energy" }
+    },
+    {
+      "Id": "cat-soft-drinks",
+      "ParentCategoryId": "cat-refreshments",
+      "Name": { "el": "Αναψυκτικά", "en": "Soft Drinks" }
+    },
+    {
+      "Id": "cat-aloe-vera",
+      "ParentCategoryId": "cat-refreshments",
+      "Name": { "el": "Aloe Vera", "en": "Aloe Vera" }
+    },
+    {
+      "Id": "cat-electrolytes",
+      "ParentCategoryId": "cat-refreshments",
+      "Name": { "el": "Ηλεκτρολύτες", "en": "Electrolytes" }
+    },
+    {
+      "Id": "cat-energy-drinks",
+      "ParentCategoryId": "cat-refreshments",
+      "Name": { "el": "Ενεργειακά Ποτά", "en": "Energy Drinks" }
+    },
+    {
+      "Id": "cat-juices-smoothies",
+      "ParentCategoryId": null,
+      "Name": { "el": "Χυμοί & Smoothies", "en": "Juices & Smoothies" }
+    },
+    {
+      "Id": "cat-juices",
+      "ParentCategoryId": "cat-juices-smoothies",
+      "Name": { "el": "Χυμοί", "en": "Juices" }
+    },
+    {
+      "Id": "cat-smoothies",
+      "ParentCategoryId": "cat-juices-smoothies",
+      "Name": { "el": "Smoothies", "en": "Smoothies" }
+    },
+    {
+      "Id": "cat-alcohol",
+      "ParentCategoryId": null,
+      "Name": { "el": "Αλκοολούχα Ποτά", "en": "Alcoholic Drinks" }
+    },
+    {
+      "Id": "cat-beers-can",
+      "ParentCategoryId": "cat-alcohol",
+      "Name": { "el": "Μπύρες 330ml", "en": "Beers 330ml" }
+    },
+    {
+      "Id": "cat-beers-bottle",
+      "ParentCategoryId": "cat-alcohol",
+      "Name": { "el": "Μπύρες Μπουκάλι 330ml", "en": "Bottled Beers 330ml" }
+    },
+    {
+      "Id": "cat-wines",
+      "ParentCategoryId": "cat-alcohol",
+      "Name": { "el": "Κρασιά 187ml", "en": "Wines 187ml" }
+    },
+    {
+      "Id": "cat-spirits-traditional",
+      "ParentCategoryId": "cat-alcohol",
+      "Name": { "el": "Αποστάγματα", "en": "Traditional Spirits" }
+    },
+    {
+      "Id": "cat-drinks-bar",
+      "ParentCategoryId": "cat-alcohol",
+      "Name": { "el": "Ποτά", "en": "Spirits & Drinks" }
+    },
+    {
+      "Id": "cat-cocktails",
+      "ParentCategoryId": "cat-alcohol",
+      "Name": { "el": "Cocktails", "en": "Cocktails" }
+    },
+    {
+      "Id": "cat-snacks",
+      "ParentCategoryId": null,
+      "Name": { "el": "Σνακ & Ξηροί Καρποί", "en": "Snacks & Nuts" }
+    },
+    {
+      "Id": "cat-nuts",
+      "ParentCategoryId": "cat-snacks",
+      "Name": { "el": "Ξηροί Καρποί 75gr", "en": "Nuts 75g" }
     }
   ],
   "Items": [
     {
-      "Id": "item-espresso",
-      "ParentCategoryId": "cat-coffee-hot",
-      "Price": { "Value": 2.20, "CurrencyId": "EUR" },
-      "Name": { "el": "Εσπρέσο", "en": "Espresso" }
+      "Id": "item-espresso-single",
+      "ParentCategoryId": "cat-coffee",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Espresso Μονός", "en": "Single Espresso" }
     },
     {
-      "Id": "item-cappuccino",
-      "ParentCategoryId": "cat-coffee-hot",
-      "Price": { "Value": 3.00, "CurrencyId": "EUR" },
-      "Name": { "el": "Καπουτσίνο", "en": "Cappuccino" }
+      "Id": "item-espresso-double",
+      "ParentCategoryId": "cat-coffee",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Espresso Διπλός", "en": "Double Espresso" }
     },
     {
-      "Id": "item-greek-coffee",
-      "ParentCategoryId": "cat-coffee-hot",
-      "Price": { "Value": 2.00, "CurrencyId": "EUR" },
-      "Name": { "el": "Ελληνικός Καφές", "en": "Traditional Greek Coffee" }
+      "Id": "item-freddo-espresso",
+      "ParentCategoryId": "cat-coffee",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Freddo Espresso", "en": "Freddo Espresso" }
     },
     {
-      "Id": "item-freddo-espr",
-      "ParentCategoryId": "cat-coffee-cold",
-      "Price": { "Value": 2.80, "CurrencyId": "EUR" },
-      "Name": { "el": "Φρέντο Εσπρέσο", "en": "Freddo Espresso" }
+      "Id": "item-freddo-cappuccino",
+      "ParentCategoryId": "cat-coffee",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Freddo Cappuccino", "en": "Freddo Cappuccino" }
     },
     {
-      "Id": "item-freddo-cap",
-      "ParentCategoryId": "cat-coffee-cold",
-      "Price": { "Value": 3.20, "CurrencyId": "EUR" },
-      "Name": { "el": "Φρέντο Καπουτσίνο", "en": "Freddo Cappuccino" }
+      "Id": "item-cappuccino-single",
+      "ParentCategoryId": "cat-coffee",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Cappuccino Μονός", "en": "Single Cappuccino" }
     },
     {
-      "Id": "item-frappe",
-      "ParentCategoryId": "cat-coffee-cold",
-      "Price": { "Value": 2.50, "CurrencyId": "EUR" },
-      "Name": { "el": "Φραπέ", "en": "Frappé" }
+      "Id": "item-cappuccino-double",
+      "ParentCategoryId": "cat-coffee",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Cappuccino Διπλός", "en": "Double Cappuccino" }
     },
     {
-      "Id": "item-tiropita",
-      "ParentCategoryId": "cat-bakery",
-      "Price": { "Value": 2.60, "CurrencyId": "EUR" },
-      "Name": { "el": "Παραδοσιακή Τυρόπιτα", "en": "Traditional Cheese Pie" }
+      "Id": "item-nescafe",
+      "ParentCategoryId": "cat-coffee",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Nescafe", "en": "Nescafe" }
     },
     {
-      "Id": "item-bougatsa",
-      "ParentCategoryId": "cat-bakery",
-      "Price": { "Value": 3.40, "CurrencyId": "EUR" },
-      "Name": { "el": "Μπουγάτσα με Κρέμα", "en": "Bougatsa with Custard" }
+      "Id": "item-french-coffee",
+      "ParentCategoryId": "cat-coffee",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Γαλλικός", "en": "Filter Coffee" }
     },
     {
-      "Id": "item-croissant",
-      "ParentCategoryId": "cat-bakery",
-      "Price": { "Value": 2.80, "CurrencyId": "EUR" },
-      "Name": { "el": "Κρουασάν Σοκολάτας", "en": "Chocolate Croissant" }
+      "Id": "item-tea",
+      "ParentCategoryId": "cat-hot-cold-beverages",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Τσάι", "en": "Tea" }
+    },
+    {
+      "Id": "item-chamomile",
+      "ParentCategoryId": "cat-hot-cold-beverages",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Χαμομήλι", "en": "Chamomile" }
+    },
+    {
+      "Id": "item-verbena",
+      "ParentCategoryId": "cat-hot-cold-beverages",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Λουίζα", "en": "Lemon Verbena" }
+    },
+    {
+      "Id": "item-salepi",
+      "ParentCategoryId": "cat-hot-cold-beverages",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Σαλέπι", "en": "Salep" }
+    },
+    {
+      "Id": "item-hot-chocolate",
+      "ParentCategoryId": "cat-hot-cold-beverages",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Σοκολάτα Ζεστή", "en": "Hot Chocolate" }
+    },
+    {
+      "Id": "item-cold-chocolate",
+      "ParentCategoryId": "cat-hot-cold-beverages",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Σοκολάτα Κρύα", "en": "Cold Chocolate" }
+    },
+    {
+      "Id": "item-coca-cola",
+      "ParentCategoryId": "cat-soft-drinks",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Coca Cola", "en": "Coca Cola" }
+    },
+    {
+      "Id": "item-coca-cola-zero",
+      "ParentCategoryId": "cat-soft-drinks",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Coca Cola Zero", "en": "Coca Cola Zero" }
+    },
+    {
+      "Id": "item-fanta",
+      "ParentCategoryId": "cat-soft-drinks",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Fanta", "en": "Fanta" }
+    },
+    {
+      "Id": "item-sprite",
+      "ParentCategoryId": "cat-soft-drinks",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Sprite", "en": "Sprite" }
+    },
+    {
+      "Id": "item-schweppes-mojito",
+      "ParentCategoryId": "cat-soft-drinks",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Schweppes Mojito", "en": "Schweppes Mojito" }
+    },
+    {
+      "Id": "item-schweppes-orange",
+      "ParentCategoryId": "cat-soft-drinks",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Schweppes Orange", "en": "Schweppes Orange" }
+    },
+    {
+      "Id": "item-schweppes-lemon",
+      "ParentCategoryId": "cat-soft-drinks",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Schweppes Lemon", "en": "Schweppes Lemon" }
+    },
+    {
+      "Id": "item-pepsi",
+      "ParentCategoryId": "cat-soft-drinks",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Pepsi", "en": "Pepsi" }
+    },
+    {
+      "Id": "item-pink-grapefruit",
+      "ParentCategoryId": "cat-soft-drinks",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Pink Grapefruit", "en": "Pink Grapefruit Soda" }
+    },
+    {
+      "Id": "item-xyno-nero",
+      "ParentCategoryId": "cat-soft-drinks",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Ξινό Νερό", "en": "Xino Nero Sparkling Water" }
+    },
+    {
+      "Id": "item-zagori-sparkling",
+      "ParentCategoryId": "cat-soft-drinks",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Ζαγόρι Ανθρακούχο", "en": "Zagori Sparkling Water" }
+    },
+    {
+      "Id": "item-mastiqua-lemonade",
+      "ParentCategoryId": "cat-soft-drinks",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Mastiqua Lemonade", "en": "Mastiqua Lemonade" }
+    },
+    {
+      "Id": "item-mastiqua-lemonade-ginger",
+      "ParentCategoryId": "cat-soft-drinks",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Mastiqua Lemonade Ginger", "en": "Mastiqua Lemonade Ginger" }
+    },
+    {
+      "Id": "item-aloe-strawberry-pomegranate-pineapple",
+      "ParentCategoryId": "cat-aloe-vera",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Aloe Vera Φράουλα - Ρόδι - Ανανάς", "en": "Aloe Vera Strawberry - Pomegranate - Pineapple" }
+    },
+    {
+      "Id": "item-aloe-original-blueberry",
+      "ParentCategoryId": "cat-aloe-vera",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Aloe Vera Original - Blueberry", "en": "Aloe Vera Original - Blueberry" }
+    },
+    {
+      "Id": "item-aloe-mango",
+      "ParentCategoryId": "cat-aloe-vera",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Aloe Vera Mango", "en": "Aloe Vera Mango" }
+    },
+    {
+      "Id": "item-powerade-blue",
+      "ParentCategoryId": "cat-electrolytes",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Powerade Μπλε 500ml", "en": "Powerade Blue 500ml" }
+    },
+    {
+      "Id": "item-powerade-orange",
+      "ParentCategoryId": "cat-electrolytes",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Powerade Πορτοκάλι 500ml", "en": "Powerade Orange 500ml" }
+    },
+    {
+      "Id": "item-gatorade-blue",
+      "ParentCategoryId": "cat-electrolytes",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Gatorade Μπλε 500ml", "en": "Gatorade Blue 500ml" }
+    },
+    {
+      "Id": "item-gatorade-orange",
+      "ParentCategoryId": "cat-electrolytes",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Gatorade Πορτοκάλι 500ml", "en": "Gatorade Orange 500ml" }
+    },
+    {
+      "Id": "item-oshee-blue",
+      "ParentCategoryId": "cat-electrolytes",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Oshee Μπλε 750ml", "en": "Oshee Blue 750ml" }
+    },
+    {
+      "Id": "item-oshee-orange",
+      "ParentCategoryId": "cat-electrolytes",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Oshee Πορτοκάλι 750ml", "en": "Oshee Orange 750ml" }
+    },
+    {
+      "Id": "item-oshee-magnesium",
+      "ParentCategoryId": "cat-electrolytes",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Oshee Μαγνήσιο 750ml", "en": "Oshee Magnesium 750ml" }
+    },
+    {
+      "Id": "item-monster-monarch",
+      "ParentCategoryId": "cat-energy-drinks",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Monster Monarch 500ml", "en": "Monster Monarch 500ml" }
+    },
+    {
+      "Id": "item-monster-mango-loco",
+      "ParentCategoryId": "cat-energy-drinks",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Monster Mango Loco 500ml", "en": "Monster Mango Loco 500ml" }
+    },
+    {
+      "Id": "item-redbull",
+      "ParentCategoryId": "cat-energy-drinks",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Red Bull", "en": "Red Bull" }
+    },
+    {
+      "Id": "item-hell",
+      "ParentCategoryId": "cat-energy-drinks",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Hell", "en": "Hell Energy Drink" }
+    },
+    {
+      "Id": "item-lucozade",
+      "ParentCategoryId": "cat-energy-drinks",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Lucozade 380ml", "en": "Lucozade 380ml" }
+    },
+    {
+      "Id": "item-juice-orange",
+      "ParentCategoryId": "cat-juices",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Φυσικός Χυμός Πορτοκάλι", "en": "Fresh Orange Juice" }
+    },
+    {
+      "Id": "item-amita-motion",
+      "ParentCategoryId": "cat-juices",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Amita Motion", "en": "Amita Motion Juice" }
+    },
+    {
+      "Id": "item-ivi-go",
+      "ParentCategoryId": "cat-juices",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Ήβη Go", "en": "Ivi Go Juice" }
+    },
+    {
+      "Id": "item-santal-pineapple",
+      "ParentCategoryId": "cat-juices",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Santal Φυσικός Χυμός Ανανάς", "en": "Santal Pineapple Juice" }
+    },
+    {
+      "Id": "item-juice-mixed",
+      "ParentCategoryId": "cat-juices",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Φυσικός Χυμός Αναμεικτος", "en": "Fresh Mixed Juice" }
+    },
+    {
+      "Id": "item-juice-lemon",
+      "ParentCategoryId": "cat-juices",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Φυσικός Χυμός Λεμόνι", "en": "Fresh Lemon Juice" }
+    },
+    {
+      "Id": "item-juice-apple-peach",
+      "ParentCategoryId": "cat-juices",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Φυσικός Χυμός Μήλο Ροδάκινο", "en": "Fresh Apple Peach Juice" }
+    },
+    {
+      "Id": "item-smoothie-strawberry-banana",
+      "ParentCategoryId": "cat-smoothies",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Smoothie Φράουλα - Μπανάνα", "en": "Strawberry - Banana Smoothie" }
+    },
+    {
+      "Id": "item-smoothie-peach-mango",
+      "ParentCategoryId": "cat-smoothies",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Smoothie Ροδάκινο - Μάνγκο", "en": "Peach - Mango Smoothie" }
+    },
+    {
+      "Id": "item-beer-alfa",
+      "ParentCategoryId": "cat-beers-can",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Άλφα 330ml", "en": "Alfa Beer 330ml" }
+    },
+    {
+      "Id": "item-beer-mamos",
+      "ParentCategoryId": "cat-beers-can",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Μάμος 330ml", "en": "Mamos Beer 330ml" }
+    },
+    {
+      "Id": "item-beer-eza-lager",
+      "ParentCategoryId": "cat-beers-can",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "EZA Lager 330ml", "en": "EZA Lager 330ml" }
+    },
+    {
+      "Id": "item-beer-eza-pilsner",
+      "ParentCategoryId": "cat-beers-can",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "EZA Pilsner 330ml", "en": "EZA Pilsner 330ml" }
+    },
+    {
+      "Id": "item-beer-fix",
+      "ParentCategoryId": "cat-beers-can",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Fix 330ml", "en": "Fix Beer 330ml" }
+    },
+    {
+      "Id": "item-beer-fix-aney",
+      "ParentCategoryId": "cat-beers-can",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Fix Άνευ 330ml", "en": "Fix Alcohol Free 330ml" }
+    },
+    {
+      "Id": "item-beer-amstel",
+      "ParentCategoryId": "cat-beers-can",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Amstel 330ml", "en": "Amstel Beer 330ml" }
+    },
+    {
+      "Id": "item-beer-corona",
+      "ParentCategoryId": "cat-beers-bottle",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Corona Μπουκάλι 330ml", "en": "Corona Bottle 330ml" }
+    },
+    {
+      "Id": "item-beer-erdinger",
+      "ParentCategoryId": "cat-beers-bottle",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Erdinger Μπουκάλι 330ml", "en": "Erdinger Bottle 330ml" }
+    },
+    {
+      "Id": "item-beer-fischer",
+      "ParentCategoryId": "cat-beers-bottle",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Fischer Μπουκάλι 330ml", "en": "Fischer Bottle 330ml" }
+    },
+    {
+      "Id": "item-beer-peroni",
+      "ParentCategoryId": "cat-beers-bottle",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Peroni Μπουκάλι 330ml", "en": "Peroni Bottle 330ml" }
+    },
+    {
+      "Id": "item-beer-fix-dark",
+      "ParentCategoryId": "cat-beers-bottle",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Fix Dark Μπουκάλι 330ml", "en": "Fix Dark Bottle 330ml" }
+    },
+    {
+      "Id": "item-beer-radler",
+      "ParentCategoryId": "cat-beers-bottle",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Radler Μπουκάλι 330ml", "en": "Radler Bottle 330ml" }
+    },
+    {
+      "Id": "item-beer-mamos-unfiltered",
+      "ParentCategoryId": "cat-beers-bottle",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Μάμος Αφιλτράριστη Μπουκάλι 330ml", "en": "Mamos Unfiltered Bottle 330ml" }
+    },
+    {
+      "Id": "item-wine-white",
+      "ParentCategoryId": "cat-wines",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Λευκό Κρασί 187ml", "en": "White Wine 187ml" }
+    },
+    {
+      "Id": "item-wine-red",
+      "ParentCategoryId": "cat-wines",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Κόκκινο Κρασί 187ml", "en": "Red Wine 187ml" }
+    },
+    {
+      "Id": "item-wine-rose-dry",
+      "ParentCategoryId": "cat-wines",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Ροζέ Ξηρό 187ml", "en": "Dry Rosé Wine 187ml" }
+    },
+    {
+      "Id": "item-wine-rose-semisweet",
+      "ParentCategoryId": "cat-wines",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Ροζέ Ημίγλυκο 187ml", "en": "Semi-Sweet Rosé Wine 187ml" }
+    },
+    {
+      "Id": "item-wine-sangria",
+      "ParentCategoryId": "cat-wines",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Σανγκρία 187ml", "en": "Sangria 187ml" }
+    },
+    {
+      "Id": "item-wine-moscato-d-asti",
+      "ParentCategoryId": "cat-wines",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Moscato d'Asti 187ml", "en": "Moscato d'Asti 187ml" }
+    },
+    {
+      "Id": "item-ouzo",
+      "ParentCategoryId": "cat-spirits-traditional",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Ούζο 200ml", "en": "Ouzo 200ml" }
+    },
+    {
+      "Id": "item-tsipouro",
+      "ParentCategoryId": "cat-spirits-traditional",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Τσίπουρο 200ml", "en": "Tsipouro 200ml" }
+    },
+    {
+      "Id": "item-raki",
+      "ParentCategoryId": "cat-spirits-traditional",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Ρακή 200ml", "en": "Raki 200ml" }
+    },
+    {
+      "Id": "item-drink-simple",
+      "ParentCategoryId": "cat-drinks-bar",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Ποτό Απλό", "en": "Standard Spirit / Drink" }
+    },
+    {
+      "Id": "item-drink-special",
+      "ParentCategoryId": "cat-drinks-bar",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Ποτό Special", "en": "Premium / Special Spirit" }
+    },
+    {
+      "Id": "item-cocktail-cuba-libre",
+      "ParentCategoryId": "cat-cocktails",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Cuba Libre", "en": "Cuba Libre" }
+    },
+    {
+      "Id": "item-cocktail-aperol-spritz",
+      "ParentCategoryId": "cat-cocktails",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Aperol Spritz", "en": "Aperol Spritz" }
+    },
+    {
+      "Id": "item-cocktail-negroni",
+      "ParentCategoryId": "cat-cocktails",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Negroni", "en": "Negroni" }
+    },
+    {
+      "Id": "item-cocktail-margarita",
+      "ParentCategoryId": "cat-cocktails",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Margarita", "en": "Margarita" }
+    },
+    {
+      "Id": "item-nuts-cashews",
+      "ParentCategoryId": "cat-nuts",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Cashews 75gr", "en": "Cashews 75g" }
+    },
+    {
+      "Id": "item-nuts-peanuts",
+      "ParentCategoryId": "cat-nuts",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Peanuts 75gr", "en": "Peanuts 75g" }
+    },
+    {
+      "Id": "item-nuts-almonds",
+      "ParentCategoryId": "cat-nuts",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Αμύγδαλα 75gr", "en": "Almonds 75g" }
+    },
+    {
+      "Id": "item-nuts-mix",
+      "ParentCategoryId": "cat-nuts",
+      "Price": { "Value": 0.00, "CurrencyId": "EUR" },
+      "Name": { "el": "Mix Nuts 75gr", "en": "Mixed Nuts 75g" }
     }
   ]
 }

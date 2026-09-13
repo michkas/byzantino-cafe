@@ -43,3 +43,6 @@ Thumbs.db
 *.njsproj
 *.sln
 *.sw?
+
+# Scratch folder for locally editing image & reference files
+reference-files/_temp/
