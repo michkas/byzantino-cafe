@@ -1,6 +1,7 @@
 /* Clean base styles */
 :root {
   color-scheme: light;
+  --menu-content-font: Georgia, "Times New Roman", serif;
 }
 
 body {
@@ -8,6 +9,10 @@ body {
   min-width: 320px;
   background-color: #f9fafb;
   color: #111827;
+}
+
+.menu-content {
+  font-family: var(--menu-content-font);
 }
 
 /* Print Stylesheet for clean printed / PDF menu output */

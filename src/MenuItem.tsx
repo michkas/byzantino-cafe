@@ -11,7 +11,7 @@ export default function MenuItem({ item, currencySymbol, lang }: MenuItemProps) 
 
   return (
     <li className="flex items-baseline justify-between gap-2 py-2 border-b border-neutral-100 last:border-b-0">
-      <span className="text-sm sm:text-base font-normal text-neutral-800">
+      <span className="text-sm sm:text-base font-normal tracking-[-0.01em] text-neutral-800">
         {itemName}
       </span>
       <span className="flex-1 mx-2 border-b border-dotted border-neutral-300 relative top-[-4px] min-w-4" aria-hidden="true" />

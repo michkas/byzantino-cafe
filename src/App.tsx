@@ -13,35 +13,49 @@ const cafeSetting = {
   el: 'Κήπος και βεράντα',
 } as const
 
-type View = 'home' | 'menu' | 'document'
+type View = 'home' | 'interactive' | 'reader'
 type Language = 'en' | 'el'
+
+const MENU_CATALOG_PATH = '/menu'
 
 function App() {
   const [currentView, setCurrentView] = useState<View>('home')
   const [lang, setLang] = useState<Language>('el')
   const [selectedParentCatId, setSelectedParentCatId] = useState<string>('all')
 
-  // Support direct QR access via URL hash (e.g. #menu, #document, or direct table visits)
+  // The home route remains separate; the menu route defaults to reader mode.
   useEffect(() => {
-    const handleHash = () => {
-      const hash = window.location.hash.toLowerCase()
-      if (hash.includes('document') || hash.includes('sheet') || hash.includes('pdf')) {
-        setCurrentView('document')
-      } else if (hash.includes('menu')) {
-        setCurrentView('menu')
+    const syncViewFromUrl = () => {
+      const url = new URL(window.location.href)
+      if (url.pathname === MENU_CATALOG_PATH) {
+        const mode = url.searchParams.get('mode')
+        setCurrentView(mode === 'interactive' ? 'interactive' : 'reader')
       } else {
         setCurrentView('home')
       }
     }
 
-    handleHash()
-    window.addEventListener('hashchange', handleHash)
-    return () => window.removeEventListener('hashchange', handleHash)
+    syncViewFromUrl()
+    window.addEventListener('popstate', syncViewFromUrl)
+    return () => window.removeEventListener('popstate', syncViewFromUrl)
   }, [])
 
   const navigateTo = (view: View) => {
+    const url = new URL(window.location.href)
+    if (view === 'home') {
+      url.pathname = '/'
+      url.searchParams.delete('mode')
+    } else {
+      url.pathname = MENU_CATALOG_PATH
+      if (view === 'interactive') {
+        url.searchParams.set('mode', 'interactive')
+      } else {
+        url.searchParams.delete('mode')
+      }
+    }
+
+    window.history.pushState({}, '', url)
     setCurrentView(view)
-    window.location.hash = view === 'home' ? '' : view
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
@@ -89,17 +103,8 @@ function App() {
             />
           </button>
 
-          {/* Right Header Controls (Context action + Language Switcher) */}
+          {/* Right Header Controls (Language Switcher Only) */}
           <div className="flex items-center gap-3">
-            {currentView !== 'home' && (
-              <button
-                onClick={() => navigateTo('home')}
-                className="inline-flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 transition cursor-pointer"
-              >
-                ← {lang === 'el' ? 'Αρχική' : 'Home'}
-              </button>
-            )}
-
             {/* Language Toggle */}
             <button
               onClick={() => setLang(lang === 'el' ? 'en' : 'el')}
@@ -114,6 +119,44 @@ function App() {
 
       {/* 2. Main Content Area */}
       <main className="flex-1">
+        {currentView !== 'home' && (
+          <div className="mx-auto max-w-7xl px-4 pt-6 sm:px-6 lg:px-8">
+            <div className="flex flex-col gap-3 rounded-xl border border-neutral-200 bg-white p-4 shadow-xs sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <h2 className="text-xl font-bold tracking-tight text-neutral-900 sm:text-2xl">
+                  {lang === 'el' ? 'Κατάλογος - Μενού' : 'Menu'}
+                </h2>
+                <p className="text-xs text-neutral-500 sm:text-sm mt-0.5">
+                  {lang === 'el'
+                    ? 'Καφές, ποτά και σνακ για κάθε στιγμή.'
+                    : 'Coffee, drinks, and bites for the day.'}
+                </p>
+              </div>
+
+              <div className="inline-flex rounded-full border border-neutral-200 bg-neutral-100 p-1 shadow-inner shadow-neutral-200/60">
+                <button
+                  onClick={() => navigateTo('reader')}
+                  className={`rounded-full px-3 py-1.5 text-[11px] font-semibold tracking-wide transition-all duration-150 cursor-pointer ${currentView === 'reader'
+                    ? 'bg-white text-neutral-900 shadow-sm ring-1 ring-neutral-200'
+                    : 'text-neutral-600 hover:text-neutral-900'
+                    }`}
+                >
+                  {lang === 'el' ? 'Αναγνώστης' : 'Reader'}
+                </button>
+                <button
+                  onClick={() => navigateTo('interactive')}
+                  className={`rounded-full px-3 py-1.5 text-[11px] font-semibold tracking-wide transition-all duration-150 cursor-pointer ${currentView === 'interactive'
+                    ? 'bg-white text-neutral-900 shadow-sm ring-1 ring-neutral-200'
+                    : 'text-neutral-600 hover:text-neutral-900'
+                    }`}
+                >
+                  {lang === 'el' ? 'Διαδραστικό' : 'Interactive'}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
         {currentView === 'home' ? (
           /* ================== HOME VIEW MOCKUP ================== */
           <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 space-y-12">
@@ -135,7 +178,7 @@ function App() {
                 </p>
                 <div className="pt-2 flex flex-wrap gap-3">
                   <button
-                    onClick={() => navigateTo('menu')}
+                    onClick={() => navigateTo('interactive')}
                     className="rounded-lg bg-neutral-900 px-5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-neutral-800 transition cursor-pointer"
                   >
                     {lang === 'el' ? 'Δείτε τον Κατάλογο' : 'View Cafe Menu'} →
@@ -244,32 +287,9 @@ function App() {
               </div>
             </section>
           </div>
-        ) : currentView === 'menu' ? (
+        ) : currentView === 'interactive' ? (
           /* ================== CAFE MENU INTERACTIVE VIEW ================== */
           <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8 space-y-6">
-            {/* Menu Header with Link to Document View */}
-            <div className="flex flex-col gap-3 rounded-xl border border-neutral-200 bg-white p-4 shadow-xs sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <h2 className="text-xl font-bold tracking-tight text-neutral-900 sm:text-2xl">
-                  {lang === 'el' ? 'Κατάλογος Καφέ & Σνακ' : 'Cafe & Snack Menu'}
-                </h2>
-                <p className="text-xs text-neutral-500 sm:text-sm mt-0.5">
-                  {lang === 'el'
-                    ? 'Ροφήματα, καφέδες και σνακ του Tennis Club'
-                    : 'Beverages, coffees, and snacks at the Tennis Club'}
-                </p>
-              </div>
-
-              {/* Document Preview Link */}
-              <button
-                onClick={() => navigateTo('document')}
-                className="inline-flex items-center gap-1.5 self-start rounded-lg border border-neutral-200 px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 transition cursor-pointer sm:self-auto"
-              >
-                <span>📄</span>
-                <span>{lang === 'el' ? 'Έντυπη Μορφή' : 'Document View'}</span>
-              </button>
-            </div>
-
             {/* Sticky Category Pills */}
             <div className="sticky top-16 z-20 -mx-4 border-y border-neutral-200 bg-white/95 px-4 py-2.5 backdrop-blur-xs sm:mx-0 sm:rounded-lg sm:border">
               <nav className="flex gap-2 overflow-x-auto no-scrollbar">
@@ -298,7 +318,7 @@ function App() {
             </div>
 
             {/* Menu Items Categories Overview Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 pt-2 items-start">
+            <div className="menu-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 pt-2 items-start">
               {displayedCategories.map((cat) => {
                 const itemsForCat = menuData.Items.filter(
                   (item) => item.ParentCategoryId === cat.Id
@@ -318,26 +338,15 @@ function App() {
         ) : (
           /* ================== MENU DOCUMENT / PRINTED SHEET PREVIEW ================== */
           <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-10">
-            {/* Top Bar Switcher Note */}
-            <div className="mb-4 flex items-center justify-between text-xs text-neutral-500">
-              <span>{lang === 'el' ? 'Προεπισκόπηση Έντυπου Καταλόγου' : 'Printed Menu Document Preview'}</span>
-              <button
-                onClick={() => navigateTo('menu')}
-                className="font-medium text-neutral-800 hover:underline cursor-pointer"
-              >
-                ← {lang === 'el' ? 'Επιστροφή στον Διαδραστικό Κατάλογο' : 'Back to interactive catalog'}
-              </button>
-            </div>
-
             {/* Document Sheet Container */}
-            <article className="rounded-xl border border-neutral-300 bg-white p-6 sm:p-12 shadow-sm space-y-8">
+            <article className="menu-content rounded-xl border border-neutral-300 bg-white p-6 sm:p-12 shadow-sm space-y-8">
               {/* Document Header */}
-              <header className="border-b-2 border-neutral-900 pb-6 text-center space-y-1">
-                <p className="text-xs font-semibold tracking-widest text-neutral-500 uppercase">
+              <header className="border-b border-neutral-200 pb-5 text-center space-y-2">
+                <p className="text-[10px] font-medium tracking-[0.2em] text-neutral-500 uppercase">
                   {cafeName}
                 </p>
-                <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900 uppercase">
-                  {lang === 'el' ? 'Κατάλογος Cafe & Bar' : 'Cafe & Bar Menu'}
+                <h1 className="text-2xl font-semibold tracking-[-0.03em] text-neutral-900 sm:text-[2rem]">
+                  {lang === 'el' ? 'Κατάλογος cafe & bar' : 'Cafe & Snack Menu'}
                 </h1>
                 <p className="text-xs text-neutral-500">
                   {lang === 'el' ? 'Όλες οι τιμές συμπεριλαμβάνουν ΦΠΑ και νόμιμους φόρους' : 'All prices include VAT and legal taxes'}
@@ -356,7 +365,7 @@ function App() {
 
                   return (
                     <section key={cat.Id} className="space-y-2">
-                      <h2 className="text-sm font-bold uppercase tracking-wider text-neutral-900 border-b border-neutral-300 pb-1">
+                      <h2 className="text-sm font-semibold tracking-[-0.02em] text-neutral-900 border-b border-neutral-300 pb-1">
                         {categoryTitle}
                       </h2>
                       <ul className="list-none p-0 m-0 divide-y divide-neutral-100">
@@ -391,52 +400,51 @@ function App() {
 
       {/* 3. Global Responsive Footer */}
       <footer className="border-t border-neutral-200 bg-white mt-12">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-6 text-center text-xs text-neutral-500 sm:flex-row sm:px-6 sm:text-left lg:px-8">
-          <div>
-            <p className="font-semibold text-neutral-700">{cafeName}</p>
-            <p>Court-side refreshments & lounge • +30 210 000 0000</p>
+        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center justify-between gap-4 text-center text-xs text-neutral-500 sm:flex-row sm:text-left">
+            <div>
+              <p className="font-semibold text-neutral-700">{cafeName}</p>
+              <p>Court-side refreshments & lounge • +30 210 000 0000</p>
+            </div>
+
+            <nav className="flex flex-wrap items-center justify-center gap-3 sm:justify-end">
+              <button
+                onClick={() => navigateTo('home')}
+                className="hover:text-neutral-900 transition cursor-pointer"
+              >
+                {lang === 'el' ? 'Αρχική' : 'Home'}
+              </button>
+              <span className="text-neutral-300">•</span>
+              <button
+                onClick={() => navigateTo('interactive')}
+                className="hover:text-neutral-900 transition cursor-pointer"
+              >
+                {lang === 'el' ? 'Κατάλογος' : 'Catalog'}
+              </button>
+              <span className="text-neutral-300">•</span>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-neutral-900 transition"
+              >
+                Instagram
+              </a>
+              <span className="text-neutral-300">•</span>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-neutral-900 transition"
+              >
+                Facebook
+              </a>
+            </nav>
           </div>
-          <div className="flex items-center gap-4">
-            <button
-              onClick={() => navigateTo('home')}
-              className="hover:text-neutral-900 transition cursor-pointer"
-            >
-              {lang === 'el' ? 'Αρχική' : 'Home'}
-            </button>
-            <span>•</span>
-            <button
-              onClick={() => navigateTo('menu')}
-              className="hover:text-neutral-900 transition cursor-pointer"
-            >
-              {lang === 'el' ? 'Κατάλογος' : 'Menu'}
-            </button>
-            <span>•</span>
-            <button
-              onClick={() => navigateTo('document')}
-              className="hover:text-neutral-900 transition cursor-pointer"
-            >
-              {lang === 'el' ? 'Έντυπο' : 'Document'}
-            </button>
-            <span>•</span>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-neutral-900 transition"
-            >
-              Instagram
-            </a>
-            <span>•</span>
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-neutral-900 transition"
-            >
-              Facebook
-            </a>
+
+          <div className="mt-4 border-t border-neutral-100 pt-4 text-center text-[11px] text-neutral-400">
+            <p>© {new Date().getFullYear()} All rights reserved.</p>
           </div>
-          <p>© {new Date().getFullYear()} All rights reserved.</p>
         </div>
       </footer>
     </div>
